@@ -1,0 +1,18 @@
+services:
+  api:
+    container_name: propstgonz-backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - '3742:3000'
+    restart: unless-stopped
+    networks:
+      - traefik-net
+    labels:
+      - "traefik.enable=false"
+networks:
+  traefik-net:
+    external: true
